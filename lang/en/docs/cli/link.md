@@ -20,10 +20,15 @@ This command is run in the package folder you'd like to consume. For example if 
 are working on `react` and would like to use your local version to debug a
 problem in `react-relay`, simply run `yarn link` inside of the `react` project.
 
-In case if you want to link yarn 3+ project into project which uses older versions of yarn
+In case if you want to link a project using yarn 2+ into a yarn 1 project. You
+need to make sure the `yarn link` command you are running invokes yarn 1.
 
 ```sh
-$ YARN_IGNORE_PATH=1 yarn link
+# If you are using Corepack to manage yarn versions
+$ YARN_IGNORE_PATH=1 SKIP_YARN_COREPACK_CHECK=1 corepack yarn@1 link
+
+# Otherwise, make sure your global yarn command is v1, and run
+$ YARN_IGNORE_PATH=1 SKIP_YARN_COREPACK_CHECK=1 yarn link
 ```
 
 ##### `yarn link [package...]`<a class="toc" id="toc-yarn-link-package" href="#toc-yarn-link-package"></a>
